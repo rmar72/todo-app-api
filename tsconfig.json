@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "rootDir": "./", // Set to the top-level folder of the project
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["node", "jest"],
+    "moduleResolution": "node" 
+  },
+  "include": ["src/**/*", "tests/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

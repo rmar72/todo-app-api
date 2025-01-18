@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "8081:8081" # Match the port your app listens on
+    environment:
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=todos
+      - DB_HOST=db
+      - DB_PORT=5432
+    depends_on:
+      - db
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todos
+    ports:
+      - "5432:5432"
+    volumes:
+        - pgdata:/var/lib/postgresql/data
+        - ./src/db/seed.sql:/docker-entrypoint-initdb.d/seed.sql
+
+volumes:
+  pgdata:
